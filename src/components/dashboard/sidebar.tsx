@@ -14,6 +14,7 @@ import {
   Star,
   Settings,
   ChevronDown,
+  Layers,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
@@ -33,7 +34,6 @@ const typeIconMap: Record<string, { icon: React.ComponentType<{ className?: stri
 
 interface SidebarProps {
   isCollapsed: boolean;
-  onToggle?: () => void;
   className?: string;
 }
 
@@ -49,6 +49,32 @@ export function Sidebar({ isCollapsed, className }: SidebarProps) {
         className
       )}
     >
+      {/* Sidebar Header with Logo and Brand */}
+      <div
+        className={cn(
+          "h-14 border-b border-border flex items-center px-4 shrink-0 transition-all duration-300",
+          isCollapsed ? "justify-center px-0" : "gap-2.5"
+        )}
+      >
+        <Link
+          href="/dashboard"
+          className={cn(
+            "flex items-center gap-2.5",
+            isCollapsed ? "justify-center" : ""
+          )}
+          title={isCollapsed ? "DevStash" : undefined}
+        >
+          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-linear-to-br from-purple-600 via-indigo-600 to-blue-500 shadow-sm shrink-0">
+            <Layers className="h-4 w-4 text-white" />
+          </div>
+          {!isCollapsed && (
+            <span className="font-bold text-base tracking-tight truncate">
+              DevStash
+            </span>
+          )}
+        </Link>
+      </div>
+
       <ScrollArea className="flex-1">
         <div className="p-3 space-y-6">
           {/* Types Section */}
