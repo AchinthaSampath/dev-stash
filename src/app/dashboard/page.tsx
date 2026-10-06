@@ -13,6 +13,10 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Sidebar } from "@/components/dashboard/sidebar";
 import { MobileSidebar } from "@/components/dashboard/mobile-sidebar";
+import { StatsCards } from "@/components/dashboard/stats-cards";
+import { RecentCollections } from "@/components/dashboard/recent-collections";
+import { PinnedItems } from "@/components/dashboard/pinned-items";
+import { RecentItems } from "@/components/dashboard/recent-items";
 
 export default function DashboardPage() {
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
@@ -103,9 +107,10 @@ export default function DashboardPage() {
           onOpenChange={setIsMobileSidebarOpen}
         />
 
-        {/* Main Content Area Placeholder (Phase 3) */}
+        {/* Main Content Area */}
         <main className="flex-1 overflow-y-auto p-6 md:p-8 bg-background">
           <div className="max-w-7xl mx-auto space-y-8">
+            {/* Page Header */}
             <div>
               <h1 className="text-2xl font-bold tracking-tight">Dashboard</h1>
               <p className="text-sm text-muted-foreground mt-0.5">
@@ -113,12 +118,17 @@ export default function DashboardPage() {
               </p>
             </div>
 
-            {/* Placeholder notification for Phase 3 */}
-            <div className="rounded-lg border border-dashed border-border/70 p-8 text-center text-muted-foreground">
-              <p className="text-sm font-medium">
-                Collections grid and Pinned items will be implemented in Phase 3.
-              </p>
-            </div>
+            {/* Stats Cards */}
+            <StatsCards />
+
+            {/* Recent Collections */}
+            <RecentCollections />
+
+            {/* Pinned Items */}
+            <PinnedItems />
+
+            {/* Recent Items */}
+            <RecentItems />
           </div>
         </main>
       </div>
